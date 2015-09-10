@@ -58,6 +58,7 @@ public class ContactServiceForUDEDBImplTest extends AbstractTransactionalJUnit4S
 		assertNotNull(contact);
 	}
 
+
 	@Test
 	public void testFindAllByPage() throws Exception {
 		 Pageable pageable = new org.springframework.data.domain.PageRequest(0,10) ;
