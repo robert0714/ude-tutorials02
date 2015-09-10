@@ -11,13 +11,13 @@ import com.iisigroup.jtd.ude.tutorials02.model.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
- 
+
 import javax.validation.ConstraintViolationException;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith; 
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,15 +26,16 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { UDEConfig.class })
 @TestExecutionListeners({ServiceTestExecutionListener.class})
 public class ContactServiceForUDEDBImplTest extends AbstractTransactionalJUnit4SpringContextTests{
-	 
+
 	@Autowired
 	private ContactService contactService ;
-	 
-	
+
+
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -50,24 +51,27 @@ public class ContactServiceForUDEDBImplTest extends AbstractTransactionalJUnit4S
 		assertNotEquals(0, result.size());
 
 	}
-    
-	@Test	
+
+
+
+	@Test
 	public void testFindById() throws Exception {
 		List<Contact> result = contactService.findAll();
 		Contact contact = contactService.findById(result.get(0).getId());
 		assertNotNull(contact);
 	}
 
+
 	@Test
 	public void testFindAllByPage() throws Exception {
-		 Pageable pageable = new org.springframework.data.domain.PageRequest(0,10) ;		 
+		 Pageable pageable = new org.springframework.data.domain.PageRequest(0,10) ;
 		 Page<Contact> contactPage = contactService.findAllByPage(pageable);
 		 final int size = contactPage.getNumberOfElements();
 		 ArrayList<Contact> list = Lists.newArrayList(contactPage.iterator());
 		 assertNotNull(list);
 		 assertEquals(10, size);
-	} 
-	
+	}
+
 	@Test
     public void testSave() throws Exception {
         deleteFromTables("CONTACT");
@@ -97,4 +101,4 @@ public class ContactServiceForUDEDBImplTest extends AbstractTransactionalJUnit4S
     }
 
 }
- 
+
