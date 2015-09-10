@@ -52,6 +52,7 @@ public class ContactServiceForUDEDBImplTest extends AbstractTransactionalJUnit4S
 	}
 
 
+
 	@Test
 	public void testFindById() throws Exception {
 		List<Contact> result = contactService.findAll();
@@ -99,4 +100,4 @@ public class ContactServiceForUDEDBImplTest extends AbstractTransactionalJUnit4S
     }
 
 }
- 
+
