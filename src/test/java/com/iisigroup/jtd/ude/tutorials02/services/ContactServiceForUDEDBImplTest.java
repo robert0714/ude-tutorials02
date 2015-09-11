@@ -1,7 +1,5 @@
 package com.iisigroup.jtd.ude.tutorials02.services;
 
-//咬我啊
-/*喔ｙa*/
 import static org.junit.Assert.*;
 
 import com.google.common.collect.Lists;
@@ -25,7 +23,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-//
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { UDEConfig.class })
@@ -38,7 +36,6 @@ public class ContactServiceForUDEDBImplTest extends AbstractTransactionalJUnit4S
 
 	@Before
 	public void setUp() throws Exception {
-		
 	}
 
 	@After

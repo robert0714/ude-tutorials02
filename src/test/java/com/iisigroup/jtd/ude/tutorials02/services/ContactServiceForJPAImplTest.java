@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext; 
+import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
 
 import org.junit.After;
@@ -28,8 +28,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-      
-                          
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JPAConfig.class })
 @TestExecutionListeners({ServiceTestExecutionListener.class})
@@ -37,11 +36,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ContactServiceForJPAImplTest  extends AbstractTransactionalJUnit4SpringContextTests{
 	@PersistenceContext
 	protected EntityManager em;
-	
+
 	@Autowired
 	@Qualifier("contactServiceJPAImpl")
 	private ContactService contactService ;
-	
+
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -60,27 +59,27 @@ public class ContactServiceForJPAImplTest  extends AbstractTransactionalJUnit4Sp
 	}
 
     @Test
-    @DataSets(setUpDataSet="/com/iisigroup/jtd/ude/tutorials02/services/ContactServiceImplTest.xls") 
+    @DataSets(setUpDataSet="/com/iisigroup/jtd/ude/tutorials02/services/ContactServiceImplTest.xls")
 	public void testFindById() throws Exception {
     	List<Contact> result = contactService.findAll();
-    	
+
     	 Contact contact = contactService.findById(result.get(0).getId());
     	 assertNotNull(  contact);
 	}
 
-	 
-    @DataSets(setUpDataSet="/com/iisigroup/jtd/ude/tutorials02/services/ContactServiceImplTest.xls") 
+
+    @DataSets(setUpDataSet="/com/iisigroup/jtd/ude/tutorials02/services/ContactServiceImplTest.xls")
 	@Test
 	public void testFindAllByPage() throws Exception {
-		 Pageable pageable = new org.springframework.data.domain.PageRequest(0,10) ;		 
+		 Pageable pageable = new org.springframework.data.domain.PageRequest(0,10) ;
 		 Page<Contact> contactPage = contactService.findAllByPage(pageable);
 		 final int size = contactPage.getNumberOfElements();
 		 ArrayList<Contact> list = Lists.newArrayList(contactPage.iterator());
 		 assertNotNull(list);
 		 assertEquals(1, size);
-	} 
-	
-	@DataSets(setUpDataSet="/com/iisigroup/jtd/ude/tutorials02/services/ContactServiceImplTest.xls") 
+	}
+
+	@DataSets(setUpDataSet="/com/iisigroup/jtd/ude/tutorials02/services/ContactServiceImplTest.xls")
 	@Test
     public void testSave() throws Exception {
         deleteFromTables("CONTACT");
