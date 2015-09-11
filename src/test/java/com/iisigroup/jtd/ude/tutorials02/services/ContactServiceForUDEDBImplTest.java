@@ -1,10 +1,7 @@
 package com.iisigroup.jtd.ude.tutorials02.services;
 
-<<<<<<< HEAD
-//咬我啊 笨蛋 sss
-=======
+//咬我啊 笨蛋 
 //咬我啊 iii//
->>>>>>> refs/remotes/origin/master
 /*喔ｙa*/
 //sss
 import static org.junit.Assert.*;
@@ -30,7 +27,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-//
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { UDEConfig.class })
