@@ -38,6 +38,7 @@ public class ContactServiceForUDEDBImplTest extends AbstractTransactionalJUnit4S
 
 	@Before
 	public void setUp() throws Exception {
+		
 	}
 
 	@After
