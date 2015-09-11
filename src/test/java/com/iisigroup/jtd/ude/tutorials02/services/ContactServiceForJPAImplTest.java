@@ -28,7 +28,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-      
+ferfefecf      
                           
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JPAConfig.class })
@@ -37,7 +37,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ContactServiceForJPAImplTest  extends AbstractTransactionalJUnit4SpringContextTests{
 	@PersistenceContext
 	protected EntityManager em;
-	
+
 	@Autowired
 	@Qualifier("contactServiceJPAImpl")
 	private ContactService contactService ;
