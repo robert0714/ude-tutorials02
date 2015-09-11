@@ -99,3 +99,4 @@ public class ContactServiceForUDEDBImplTest extends AbstractTransactionalJUnit4S
     }
 
 }
+
