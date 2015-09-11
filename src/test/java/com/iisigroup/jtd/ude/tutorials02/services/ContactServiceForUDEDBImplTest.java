@@ -1,7 +1,12 @@
 package com.iisigroup.jtd.ude.tutorials02.services;
 
+<<<<<<< HEAD
 //咬我啊 笨蛋 sss
+=======
+//咬我啊 iii//
+>>>>>>> refs/remotes/origin/master
 /*喔ｙa*/
+//sss
 import static org.junit.Assert.*;
 
 import com.google.common.collect.Lists;
