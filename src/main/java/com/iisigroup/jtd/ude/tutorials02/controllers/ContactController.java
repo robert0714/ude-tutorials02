@@ -135,7 +135,6 @@ public class ContactController {
                 fileContent = IOUtils.toByteArray(inputStream);
                 contact.setPhoto(fileContent);
             } catch (IOException ex) {
-            	logger.error(ex.getMessage() , ex);
                 logger.error("Error saving uploaded file");
             }
             contact.setPhoto(fileContent);
@@ -180,15 +179,14 @@ public class ContactController {
         // Process order by
         Sort sort = null;
         String orderBy = sortBy;
-        if (orderBy != null && "birthDateString".equals(orderBy))
+        if (orderBy != null && orderBy.equals("birthDateString"))
             orderBy = "birthDate";
 
         if (orderBy != null && order != null) {
-            if ("desc".equals(order)) {
+            if (order.equals("desc")) {
                 sort = new Sort(Sort.Direction.DESC, orderBy);
-            } else {
+            } else
                 sort = new Sort(Sort.Direction.ASC, orderBy);
-            }
         }
 
         // Constructs page request for current page
