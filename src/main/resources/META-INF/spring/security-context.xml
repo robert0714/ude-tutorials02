@@ -28,19 +28,48 @@
 <!-- 	</http> -->
   	<!-- 以上為4.0 寫法 -->
 	 
+<!-- namespace configuration style -->
+<!-- 	<authentication-manager> -->
+<!-- 		<authentication-provider> -->
+<!--             <jdbc-user-service id="userDetailsService" -->
+<!--                 data-source-ref="dataSource" /> -->
+<!--         </authentication-provider> -->
+<!--         <authentication-provider>             -->
+<!--             <user-service> -->
+<!--                 <user name="user" password="user" authorities="ROLE_USER" /> -->
+<!--             </user-service> -->
+<!--         </authentication-provider> -->
+<!--     </authentication-manager> -->
 
-	<authentication-manager>
-		<authentication-provider>
-            <jdbc-user-service id="userDetailsService"
-                data-source-ref="dataSource" />
-        </authentication-provider>
-        <authentication-provider>            
-            <user-service>
-                <user name="user" password="user" authorities="ROLE_USER" />
-            </user-service>
-        </authentication-provider>
-    </authentication-manager>
-    
-    
-    
+	<beans:bean id="org.springframework.security.authenticationManager"
+		class="org.springframework.security.authentication.ProviderManager">
+		<beans:constructor-arg>
+			<beans:list>
+				<beans:ref bean="daoAuthenticationProvider" />
+				<beans:ref bean="daoAuthenticationProvider2" />
+<!-- 				<beans:ref bean="anonymousAuthenticationProvider" /> -->
+<!-- 				<beans:ref bean="ldapAuthenticationProvider" /> -->
+			</beans:list>
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="daoAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<beans:property name="userDetailsService" ref="userDetailsService" />
+	</beans:bean>
+	<beans:bean id="daoAuthenticationProvider2"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<beans:property name="userDetailsService" ref="inMemoryDaoImpl" />
+	</beans:bean>	
+    <beans:bean id="userDetailsService"
+			class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+		<beans:property name="dataSource" ref="dataSource"/>
+	</beans:bean>
+	<beans:bean id = "inMemoryDaoImpl"  
+	class = "org.springframework.security.provisioning.InMemoryUserDetailsManager" >  
+        <beans:constructor-arg  >             
+            <beans:value>
+					user=password,ROLE_USER
+			</beans:value>
+        </beans:constructor-arg >  
+    </beans:bean > 
 </beans:beans>
